@@ -27,6 +27,14 @@ impl Node{
         }
     }
 
+    pub fn clone(&mut self) -> Node{
+        Node{
+            id:self.id.clone(),
+            ip:self.ip.clone(),
+            port:self.port.clone(),
+            socket: Option::from(self.socket.as_mut().unwrap().try_clone().unwrap()),
+        }
+    }
 
     pub fn get_info(&self) -> String {
         format!("{}:{}:{}", self.ip, self.port, self.id.clone() )
